@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>RESUME</title>
+	<link rel="stylesheet" href="css/style_2.css">
+</head>
+<body>
+	<div class="box">
+	<div class="box-left">
+		<h1>简历</h1>
+	</div>
+	<div class="box-right">
+	 <div class="sec1">
+		<h1>基本信息</h1>
+		<p><strong>姓名</strong> 张三 &nbsp;&nbsp;&nbsp;<strong>性别</strong> 男 &nbsp;&nbsp;&nbsp;<strong>应聘职位</strong> Web前端工程师</p>
+	 </div>
+	 <div class="sec1">
+		<h1>联系方式</h1>
+		<p><strong>手机</strong> 12312341234 &nbsp;&nbsp;&nbsp;<strong>E-mail </strong> <a href="mailto:joinefe@baidu.com">joinefe@baidu.com</a> &nbsp;&nbsp;&nbsp;<strong>个人主页 </strong><a href="https://github.com/jyhu1993/">Github</a></p>
+	 </div>
+	 <div class="sec2">
+		<h1>能力描述</h1>
+		<p><strong>技术能力</strong><br/>熟练掌握HTML,CSS,JavaScript<br/><br/><span><strong>综合能力</strong><br/>良好的沟通，主动积极，努力勤奋</span></p>
+	</div>
+	<div class="sec2">
+		<h1>教育经历</h1>
+		<p><strong>本科</strong><br>百度前端技术学院小微学院<br><br><span><strong>研究生</strong><br>百度前端技术学院大斌学院</span></p>
+	 </div>
+	 <div class="sec2">
+		<h1>项目经历</h1>
+		<p><strong>小度小度</strong><br>作为前端工程师角色参与了ABC组件的开发<br><br><span><strong>SAN Doc</strong><br>作为文档工程师参与了SAN Doc编写</span></p>
+     </div>
+	</div>
+    </div>
+</body>
+</html>
