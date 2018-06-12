@@ -1,0 +1,19 @@
+.box{
+	margin:0px 150px;
+}
+
+.box-left{
+	width: 20%;
+	background-color: #4FC9E4;
+	display:inline-block;
+	text-align: center;
+	vertical-align: top;
+	height: 830px;
+
+}
+.box-right{
+	display:inline-block;
+	padding-left: 20px;
+
+}
+
