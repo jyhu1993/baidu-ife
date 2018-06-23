@@ -7,7 +7,7 @@
 	width: 1600px;
 	height: 990px;
 	margin: auto;
-	background-image: url(../images/part1-background.png);
+	background-image: url(images/part1-background.png);
 	background-repeat: no-repeat;
 }
 
@@ -147,7 +147,7 @@
 .part3{
 	width: 1600px;
 	height: 800px;
-	background-image: url(../images/part3-background.png);
+	background-image: url(images/part3-background.png);
 	overflow: hidden;
 }
 .part3-text{
@@ -198,7 +198,7 @@
 .part3 .screen{
 	width: 721px;
 	height: 541px;
-	background-image: url(../images/screen.png);
+	background-image: url(images/screen.png);
 	margin-top:29.5px;
 	margin-left: 61px;
 }
