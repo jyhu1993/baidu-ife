@@ -1,0 +1,444 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+/*第一部分样式*/
+.part1{
+	width: 1600px;
+	height: 990px;
+	margin: auto;
+	background-image: url(../images/part1-background.png);
+	background-repeat: no-repeat;
+}
+
+.part1-text h1{
+	font-size: 62px;
+	color: #fff;
+	text-align: center;
+	line-height: 0.8em;
+	padding-top: 208px;
+}
+
+.part1-text p{
+	font-size: 20px;
+	text-align: center;
+	color: #b3b2af;
+	margin: auto;
+	width: 740px;
+	margin-top: 86px;
+}
+
+.part1-form{
+	width: 970px;
+	height: 250px;
+	border: #565451 solid 1px;
+	margin: auto;
+	margin-top: 100px;
+	text-align: center;
+}
+
+.part1-form h2{
+	padding-top: 57px;
+	color: #fff;
+	font-size: 16px;
+}
+
+.part1-form p{
+	font-size:12px;
+	color: #6d6a64;
+	line-height: 3em;
+}
+.part1 input[type="text"]{
+	width: 291px;
+	height: 50px;
+	border: #565451 solid 1px;
+	border-radius: 3px;
+	background: transparent;
+	color: #fff;
+	padding-left: 18px;
+	margin-right: 30px;
+}
+.part1 input[type="submit"]{
+	width: 127px;
+	height: 52px;
+	border-radius: 3px;
+}
+.part1 form{
+	margin-top: 32px;
+}
+
+/*以下为第二部分样式*/
+.part2{
+	width: 1600px;
+	height: 710px;
+	text-align: center;
+}
+.part2 p{
+	font-size: 14px;
+	color: #141414;
+	padding-top: 84px;
+}
+.part2 h1{
+	width: 724px;
+	font-size: 42px;
+	color: #141414;
+	margin: auto;
+	margin-top: 20px;
+}
+.part2 .nav{
+	width: 1030px;
+	height: 278px;
+	margin: auto;
+	margin-top: 85px;
+	position: relative;
+}
+.nav p{
+	padding: 0;
+	font-size: 16px;
+	color: #9a9a9a;
+}
+.nav h2{
+	font-size: 20px;
+	padding-bottom: 12px;
+}
+.iphone,.pencil{
+	width: 450px;
+	height: 139px;
+	float: left;
+}
+
+.check, .setting{
+	width: 450px;
+	height: 139px;
+	float: right;
+}
+.nav img{
+	float: left;
+}
+
+.iphone img{
+	margin-left: 8px;
+	margin-right: 26px;
+}
+
+.pencil img{
+	margin-left: -9px;
+	margin-right: 26px;
+}
+.iphone .text, .pencil .text{
+	width: 380px;
+	float: left;
+	text-align: left;
+}
+.check .text, .setting .text{
+	width: 375px;
+	float: left;
+	text-align: left;
+}
+.check img{
+	margin-right: 28px;
+}
+
+.setting img{
+	margin-left: -2px;
+	margin-right: 22px;
+}
+/*以下为第三部分样式*/
+.part3{
+	width: 1600px;
+	height: 800px;
+	background-image: url(../images/part3-background.png);
+	overflow: hidden;
+}
+.part3-text{
+	width: 509px;
+	margin-left: 312px;
+	padding-top: 183px;
+	position: relative;
+}
+
+.part3-text h1{
+	font-size: 42px;
+	color: #fff;
+	width: 430px;
+	padding-bottom: 90px;
+}
+
+.part3-text p{
+	color: #d2d3d1;
+	font-size: 18px;
+	width: 430px;
+	padding-bottom: 54px;
+}
+.part3 input[type="text"]{
+	width: 244px;
+	height: 60px;
+	border-radius: 2px;
+	text-align: center;
+	font-size: 12px;
+}
+.part3 .input1{
+	color: #141414;
+	border: none;
+	margin-right: 13px;
+}
+.part3 .input2{
+	color: #ffffff;
+	background: transparent;
+	border:#6d7470 solid 1px;
+}
+.part3-ipad{
+	width: 645px;
+	height: 600px;
+	border: #7a7b7a solid 1px;
+	border-radius: 11px 0 0 11px;
+	float: right;
+	margin-top: 105px;
+}
+.part3 .screen{
+	width: 721px;
+	height: 541px;
+	background-image: url(../images/screen.png);
+	margin-top:29.5px;
+	margin-left: 61px;
+}
+/*以下为第四部分样式*/
+.part4{
+	width: 1600px;
+	height: 580px;
+	text-align: center;
+}
+.part4 h1{
+	color: #141414;
+	padding-top: 100px;
+}
+.part4-text{
+	width: 1030px;
+	margin: auto;
+	display: flex;
+	margin-top: 92px;
+}
+
+.part4-text-child{
+	padding: 0 40px;
+}
+.part4-text-child img{
+	padding-bottom: 30px;
+}
+/*以下为第五部分样式*/
+.part5{
+	width: 1600px;
+	height: 1000px;
+	border-top: #e7e7e7 solid 1px;
+	border-bottom: #e7e7e7 solid 1px;
+}
+.part5-content{
+	width: 972px;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 105px;
+}
+
+.part5-content-text{
+	width: 340px;
+	margin-bottom: 82px;
+}
+.part5 img{
+	padding-bottom: 82px;
+}
+/*以下为第六部分样式*/
+.part6{
+	width: 1600px;
+	height: 1084px;
+	border-top: #e7e7e7 solid 1px;
+	border-bottom: #e7e7e7 solid 1px;
+	text-align: center;
+}
+.part6 .h1{
+	font-size: 42px;
+	padding-top: 98px;
+}
+.part6 .p{
+	width: 712px;
+	padding-top: 30px;
+	margin: auto;
+	color: #797979;
+	padding-bottom: 66px;
+}
+.part6 .intro{
+	width: 972px;
+	height: 710px;
+	margin: auto;
+	text-align: left;
+}
+
+.intro img{
+	position: relative;
+}
+.intro .img1{
+
+}
+.intro .img2{
+	left: 27px;
+}
+.intro .img3{
+	top: 25px;
+}
+.intro .img4{
+	left: 27px;
+	top: 25px;
+}
+.intro img:hover{
+	filter: brightness(50%);
+	opacity: 0.5;
+}
+.part6 .intro .information{
+	background-color: #141414;
+	width: 470px;
+	height: 340px;
+	text-align: center;
+	position: relative;
+	bottom: 690px;
+	z-index: -1;
+}
+.information h1{
+	color: #fff;
+	font-size: 16px;
+	padding-top: 104px;
+	padding-bottom: 16px;
+}
+.information p{
+	color: #5b5b5b;
+	font-size: 12px;
+	padding-bottom: 36px;
+}
+.information img{
+	padding:0 16px;
+}
+/*以下为第7部分样式*/
+.part7{
+	width: 1600px;
+	height: 702px;
+}
+.part7-text{
+	width: 970px;
+	height: 560px;
+	margin: auto;
+	padding: 72px;
+}
+.part7-text1{
+	width: 470px;
+	height: 560px;
+	border: #e7e7e7 solid 1px;
+	border-radius: 5px;
+	text-align: center;
+	float: left;
+}
+.part7-text1 p{
+	color: #141414;
+	font-size: 16px;
+	padding-top: 50px;
+	padding-bottom: 45px;
+}
+.part7 input[type="text"]{
+	margin: auto;
+	width: 349px;
+	margin-bottom: 30px;
+	color: #a7a7a7;
+}
+.input-mail, .input-subject, .input-message{
+	height: 50px;
+	padding-left: 20px;
+}
+.input-message{
+	padding-bottom: 100px;
+
+}
+
+.input-send{
+	color: #fff;
+	width: 372px;
+	height: 50px;
+	background: #141414;
+	border: none;
+}
+.part7-text2{
+	width: 370px;
+	height: 560px;
+	float: right;
+}
+.part7-text2 h1{
+	color: #141414;
+	font-size: 42px;
+	padding-top: 81px;
+	padding-bottom: 30px;
+}
+.part7-text2 p{
+	padding-bottom: 45px;
+}
+.part7-map,.part7-phone,.part7-mail {
+	float: left;
+	width: 370px;
+	margin-bottom:15px 0;
+}
+.part7-map img{
+	float: left;
+	padding-top: 5px;
+	padding-right: 16px;
+
+}
+.part7-phone img{
+	float: left;
+	padding-right: 14px;
+
+}
+.part7-mail img{
+	float:left;
+	padding-right: 14px;
+	padding-top: 5px;
+}
+/*以下为第八部分样式*/
+.part8{
+	width: 1600px;
+	height: 409px;
+	background-color: #141414;
+}
+.part8-flex{
+	width: 1170px;
+	padding-top: 90px;
+	margin: auto;
+	display: flex;
+}
+.part8-text{
+	width: 272px;
+}
+.part8 h3{
+	color: #fff;
+	font-size: 14px;
+	padding-bottom: 35px;
+}
+.part8 ul{
+	color:#7a7a7a;
+	font-size: 16px;
+	list-style: none;
+}
+.part8 li{
+	padding-bottom: 35px;
+}
+.part8-text img{
+	padding-right: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
