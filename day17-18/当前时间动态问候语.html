@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态问候语</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		var myDate=new Date();
+		var myHour=myDate.getHours();
+		console.log(myHour);
+		if (myHour>=0 && myHour<12) {
+			document.write("上午好");
+			
+		}else if (myHour>=12 && myHour<18) {
+			document.write("下午好");
+			
+		}else{
+			document.write("晚上好");
+			
+		}
+	</script>
+	
+</body>
+</html>
