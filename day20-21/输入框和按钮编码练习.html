@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输入框和按钮</title>
+</head>
+<body>
+	<input id="name" type="text">    
+	<button id="submit-btn">Submit</button>
+	<script type="text/javascript">
+		document.getElementById("submit-btn").onclick=function myFunction(){
+			var txt=document.getElementById("name").value;
+			console.log(txt);
+		};
+
+		function returnKey(event){
+			if (event.keyCode==13) {
+				console.log(document.getElementById("name").value);
+			}
+		}
+		function returnEsc(event){
+			if (event.keyCode==27) {
+				document.getElementById("name").value="";
+			}
+		}
+		document.getElementById("name").onkeydown=function(){
+			returnKey(event);
+			returnEsc(event);
+
+		};
+	</script>
+</body>
+</html>

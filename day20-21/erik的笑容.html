@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>erik的笑容</title>
+	<style type="text/css">
+		*{
+		padding: 0;
+		margin: 0;
+		}
+		.pic-div{
+			width: 480px;
+			height: 480px;
+			position: relative;
+			overflow: hidden;
+		}
+		img{
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div class="pic-div">
+		<img id="pic" src="erik.jpg">
+	</div>
+	<script type="text/javascript">
+		var picPos=document.getElementById("pic");
+			picPos.style.top="0px";
+		function myfun(){
+		function showSmile(){
+			var distance=parseInt(picPos.style.top);
+			distance=distance-480;
+			picPos.style.top=distance+"px";
+			console.log(picPos.style.top);
+			if (picPos.style.top=="-7680px") {
+				clearInterval(a);
+			}
+		}
+		a=setInterval(showSmile,100);
+	}
+	window.onload=myfun();
+
+		
+	</script>
+	
+</body>
+</html>
