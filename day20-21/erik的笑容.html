@@ -33,7 +33,7 @@
 			picPos.style.top=distance+"px";
 			console.log(picPos.style.top);
 			if (picPos.style.top=="-7680px") {
-				clearInterval(a);
+				picPos.style.top="0px";
 			}
 		}
 		a=setInterval(showSmile,100);
