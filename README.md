@@ -12,4 +12,6 @@
 >>day17-18 四个JavaScript编程小练习<br />
 >>day19 查找DOM<br />
 >>day20-21 四个javascript编程练习<br /> 
+>>day22-24 javascript对象，数组，字符串，数字编程练习<br />
+---------本节还有两个程序未完成；
   
