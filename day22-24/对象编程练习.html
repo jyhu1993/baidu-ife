@@ -60,39 +60,56 @@
 };
 
 
-    
-
-
-
+var flag=false;
 // 假设id和name均不会重复，根据输入name找到对应的id
-function findIdByName(name) {
-   function findObj(tree){
-    if (!(tree.name)) {
-        return false;
-    }else if (tree.name==name) {
-    console.log(tree.id);
-   }else{
-    for(var propty in tree){
-    console.log(propty);
-    return findObj(tree.propty);
-} 
-   }
-}
-findObj(tree); 
-}
-window.onload=findIdByName("Simon");
-
+function findIdByName(obj,name) {
+            if (obj == null) {//改节点为空的时候
+                return;
+            }
+            if (obj.name == name){
+                flag = true;
+                console.log(obj.id);
+                return obj.id;
+            }
+            else {
+                findIdByName(obj.left,name);
+                findIdByName(obj.right,name);
+            }
+        }
+        findIdByName(tree,'Carl');
+        if (!flag) {
+            console.log('no this man ');
+        }
 
 // 假设id和name均不会重复，根据输入id找到对应的name
-function findNameById(id) {
-
-}
-
-// 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
-function getListWithDLR() {
-
-}
-
+        function findNameById(id,obj) {
+            if (obj == null){
+                return ;
+            }
+            if (obj.id == id) {
+                console.log(obj.name);
+                flag = true;
+                return;
+            }else {
+                findNameById(id, obj.left);
+                findNameById(id,obj.right);
+            }
+        }
+        flag = false;
+        findNameById(10,tree);
+        if (!flag) {
+            console.log('no this man ');
+        }
+        // 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
+        function getListWithDLR(obj) {
+            if (obj == null) {
+                return null;
+            }
+            console.log(obj.name);
+            getListWithDLR(obj.left);
+            getListWithDLR(obj.right);
+        }
+        getListWithDLR(tree);
 // 把这个对象中所有的名字以“中序遍历”的方式全部输出到console中
 function getListWithLDR() {
 
