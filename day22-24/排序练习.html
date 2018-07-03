@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>排序练习</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arr = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+		function compare(num1, num2){
+			if (num1<num2) {
+				return -1;
+			}else if (num1>num2) {
+				return 1;
+			}else{
+				return 0;
+			}
+
+		}
+		console.log(arr.sort(compare));
+		//
+
+		var arr1 = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+		var arr1Sort=arr1.sort();
+		console.log(arr1Sort);
+		console.log(arr1Sort.reverse());
+		//
+
+		var arr2 = [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+		function compare2(num1, num2){
+			if (num1[1]<num2[1]) {
+				return 1;
+			}else if (num1[1]>num2[1]) {
+				return -1;
+			}else{
+				return 0;
+			}
+
+		}
+		console.log(arr2.sort(compare2));
+		//
+		var arr3 = [
+    {
+        id: 1,
+        name: 'candy',
+        value: 40
+    }, {
+        id: 2,
+        name: 'Simon',
+        value: 50
+    }, {
+        id: 3,
+        name: 'Tony',
+        value: 45
+    }, {
+        id: 4,
+        name: 'Annie',
+        value: 60
+    }
+];
+function compare3(num1, num2){
+			if (num1.value<num2.value) {
+				return -1;
+			}else if (num1.value>num2.value) {
+				return 1;
+			}else{
+				return 0;
+			}
+
+		}
+		console.log(arr3.sort(compare3));
+
+
+	
+			
+		
+		
+
+	</script>
+	
+</body>
+</html>

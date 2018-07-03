@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组练习</title>
+</head>
+<body>
+	<input id="queue-input" type="text">
+	<p id="queue-cont">队列内容：apple&lt;-pear</p>    
+	<button id="in-btn">入队</button>
+	<button id="out-btn">出队</button>
+	<button id="font-btn">打印队头元素内容</button>
+	<button id="empty-btn">判断队列是否为空</button>
+<script>
+
+var queue = ["apple", "pear"];
+var queueCont=document.getElementById("queue-cont");
+document.getElementById("in-btn").onclick=function inQueue(){
+	var text=document.getElementById("queue-input").value;
+	queue.unshift(text);
+	queueCont.innerHTML=queue.join("<-");
+};
+document.getElementById("out-btn").onclick=function outQueue(){
+	queue.pop();
+	queueCont.innerHTML=queue.join("<-");
+};
+document.getElementById("font-btn").onclick=function queueRight(){
+		queueCont.innerHTML=queue[0];
+	
+	};
+document.getElementById("empty-btn").onclick=function emptyQueue(){
+		if (queue.length==0) {
+			queueCont.innerHTML="The queue is empty";
+		}else{
+			queueCont.innerHTML="The queue is not empty";
+
+		}
+	};
+
+</script>
+	
+</body>
+</html>
