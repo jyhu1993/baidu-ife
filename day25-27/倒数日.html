@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒数日</title>
+</head>
+<body>
+    <select id="year-select">
+    </select>
+
+    <select id="month-select">      
+    </select>
+
+    <select id="day-select">   
+    </select>
+
+    <select id="hour-select"> 
+    </select>
+
+    <select id="minute-select"> 
+    </select>
+
+    <select id="second-select">
+    </select>
+
+    <p id="result-wrapper">现在距离 <span id="select-time">2001年1月1日星期X HH:MM:SS</span> <span id="current-time">还有 X 天 X 小时 X 分 X 秒</span></p>
+    <script type="text/javascript">
+        //插入年选项；
+        for (var i = 1900; i <=2100; i++) {
+            var year = document.createElement("option");
+            year.setAttribute("value","i");
+            var yearSelect = document.getElementById("year-select");
+            yearSelect.appendChild(year);
+            var yearTxt = document.createTextNode(i);
+            year.appendChild(yearTxt);
+        }
+        //插入月选项；
+        for (var i = 1; i <= 12; i++) {
+            var month = document.createElement("option");
+            month.setAttribute("value","i");
+            var monthSelect = document.getElementById("month-select");
+            monthSelect.appendChild(month);
+            var monthTxt = document.createTextNode(i);
+            month.appendChild(monthTxt);
+        }
+        //插入日选项;
+        for (var i = 1; i <= 31; i++) {
+            var day = document.createElement("option");
+            day.setAttribute("value","i");
+            var daySelect = document.getElementById("day-select");
+            daySelect.appendChild(day);
+            var dayTxt = document.createTextNode(i);
+            day.appendChild(dayTxt);
+        }
+        //插入小时选项；
+        for (var i = 0; i <= 23; i++) {
+            var hour = document.createElement("option");
+            hour.setAttribute("value","i");
+            var hourSelect = document.getElementById("hour-select");
+            hourSelect.appendChild(hour);
+            var hourTxt = document.createTextNode(i);
+            hour.appendChild(hourTxt);
+        }
+        //插入分钟数；
+        for (var i = 0; i <= 59; i++) {
+            var minute = document.createElement("option");
+            minute.setAttribute("value","i");
+            var minuteSelect = document.getElementById("minute-select");
+            minuteSelect.appendChild(minute);
+            var minuteTxt = document.createTextNode(i);
+            minute.appendChild(minuteTxt);
+        }
+        //插入秒数；
+        for (var i = 0; i <= 59; i++) {
+            var second = document.createElement("option");
+            second.setAttribute("value","i");
+            var secondSelect = document.getElementById("second-select");
+            secondSelect.appendChild(second);
+            var secondTxt = document.createTextNode(i);
+            second.appendChild(secondTxt);
+        }
+        //转换星期表达的函数；
+        function weekDay(weekday){
+        switch(weekday){
+            case 0: weekday = "星期日";
+            break;
+            case 1: weekday = "星期一";
+            break;
+            case 2: weekday = "星期二";
+            break;
+            case 3: weekday = "星期三";
+            break;
+            case 4: weekday = "星期四";
+            break;
+            case 5: weekday = "星期五";
+            break;
+            case 6: weekday = "星期六";
+            break;
+        }
+        return weekday;
+    }
+
+        //获取选中时间的函数；
+        function getSelectTime(){
+            var yearIndex = yearSelect.selectedIndex;
+            var yearTar = yearSelect.options[yearIndex].text;
+            var monthIndex = monthSelect.selectedIndex;
+            var monthTar = monthSelect.options[monthIndex].text;
+            var dayIndex = daySelect.selectedIndex;
+            var dayTar = daySelect.options[dayIndex].text;
+            var timeArgu = monthTar + "/" + dayTar + "/" + yearTar;
+            var weekTarNum = new Date(Date.parse(timeArgu)).getDay();
+            var weekTar = weekDay(weekTarNum);
+            var hourIndex = hourSelect.selectedIndex;
+            var hourTar = hourSelect.options[hourIndex].text;
+            var minuteIndex = minuteSelect.selectedIndex;
+            var minuteTar = minuteSelect.options[minuteIndex].text; 
+            var secondIndex = secondSelect.selectedIndex;
+            var secondTar = secondSelect.options[secondIndex].text;
+
+            var selectTime = yearTar + "年" + monthTar + "月" + dayTar + "日 " + weekTar + " " + hourTar + ":" + minuteTar + ":" + secondTar;
+            document.getElementById("select-time").innerHTML = selectTime;
+            //将选中的时间转化为毫秒数；
+            selectMsec = new Date(yearTar,monthTar-1,dayTar,hourTar,minuteTar,secondTar);
+        }
+        //计算选中时间与当前时间的差值；
+        function calTimeDiff(){
+            var currentTimeMsec = new Date();
+            if (currentTimeMsec >= selectMsec) {
+                diffMsec = currentTimeMsec - selectMsec;
+            }else{
+                diffMsec = selectMsec - currentTimeMsec;
+            }
+            var diffSecInt = Math.round(diffMsec / 1000);
+            var diffSecRem = diffSecInt % 60;
+            var diffMinuteInt = Math.floor(diffSecInt / 60);
+            var diffMinuteRem = diffMinuteInt % 60;
+            var diffHourInt = Math.floor(diffMinuteInt / 60);
+            var diffHourRem = diffHourInt % 24;
+            var diffDayInt = Math.floor(diffHourInt / 24);
+            var diffTime = diffDayInt + "天" + diffHourRem + "小时" + diffMinuteRem + "分" + diffSecRem + "秒";
+            if (currentTimeMsec >= selectMsec) {
+                document.getElementById("current-time").innerHTML = "已经过去 " + diffTime; 
+            }else{
+                document.getElementById("current-time").innerHTML = "还有 " + diffTime; 
+            }   
+        }
+        //打开页面时即调用函数；
+        getSelectTime();
+        setInterval(calTimeDiff,1000);
+        //改变selected选项时调用函数，onchang事件；
+        var body = document.getElementsByTagName("body")[0];
+        body.onchange = function(){
+            getSelectTime();
+            setInterval(calTimeDiff,1000);
+        };     
+    </script>
+        
+</body>
+</html>
