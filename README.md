@@ -13,5 +13,5 @@
 >>day19 查找DOM<br />
 >>day20-21 四个javascript编程练习<br /> 
 >>day22-24 javascript对象，数组，字符串，数字编程练习<br />
----------本节还有两个程序未完成；
+>>day25-27 javascript实现 倒数日 功能<br />
   
