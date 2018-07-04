@@ -25,60 +25,55 @@
 
     <p id="result-wrapper">现在距离 <span id="select-time">2001年1月1日星期X HH:MM:SS</span> <span id="current-time">还有 X 天 X 小时 X 分 X 秒</span></p>
     <script type="text/javascript">
-        //插入年选项；
-        for (var i = 1900; i <=2100; i++) {
-            var year = document.createElement("option");
-            year.setAttribute("value","i");
-            var yearSelect = document.getElementById("year-select");
-            yearSelect.appendChild(year);
-            var yearTxt = document.createTextNode(i);
-            year.appendChild(yearTxt);
+        //插入option列表的函数；
+        function creatOption(min,max,whichSelect){
+            for (var i = min; i <= max; i++) {
+                var option = document.createElement("option");
+                option.setAttribute("value",i);
+                var thisSelect = document.getElementById(whichSelect);
+                thisSelect.appendChild(option);
+                var optionTxt = document.createTextNode(i);
+                option.appendChild(optionTxt);
+                
+            }
         }
-        //插入月选项；
-        for (var i = 1; i <= 12; i++) {
-            var month = document.createElement("option");
-            month.setAttribute("value","i");
-            var monthSelect = document.getElementById("month-select");
-            monthSelect.appendChild(month);
-            var monthTxt = document.createTextNode(i);
-            month.appendChild(monthTxt);
+
+        creatOption(1900,2100,"year-select");//插入年选项框；
+        creatOption(1,12,"month-select");//插入月选项框；
+        creatOption(0,23,"hour-select");//插入小时选项框;
+        creatOption(0,59,"minute-select");//插入分钟选项框；
+        creatOption(0,59,"second-select");//插入秒数选项框;
+
+        //闰年2月份天数计算；
+        function leapYear(){
+            var yearTar = getTargetTxt("year-select");
+            var remainder1 = yearTar % 4;
+            var remainder2 = yearTar % 100;
+            var remainder3 = yearTar % 400;
+            if ((remainder1 == 0 && remainder2 != 0) || remainder3 == 0) {
+                document.getElementById("day-select").innerHTML = "";
+                creatOption(1,29,"day-select");
+            }else{
+                document.getElementById("day-select").innerHTML = "";
+                creatOption(1,28,"day-select");
+            }
         }
-        //插入日选项;
-        for (var i = 1; i <= 31; i++) {
-            var day = document.createElement("option");
-            day.setAttribute("value","i");
-            var daySelect = document.getElementById("day-select");
-            daySelect.appendChild(day);
-            var dayTxt = document.createTextNode(i);
-            day.appendChild(dayTxt);
+    
+        //小月份日选项;
+        function exactDays(){
+            var monthTar = getTargetTxt("month-select");
+            if (monthTar == 1 || monthTar == 3 || monthTar == 5 || monthTar == 7 || monthTar == 8 || monthTar == 10 || monthTar == 12) {
+                    document.getElementById("day-select").innerHTML = "";
+                    creatOption(1,31,"day-select");
+                }else if(monthTar == 4 || monthTar == 6 || monthTar == 9 || monthTar == 11){
+                    document.getElementById("day-select").innerHTML = "";
+                    creatOption(1,30,"day-select");
+                }else{
+                    leapYear();
+                }
         }
-        //插入小时选项；
-        for (var i = 0; i <= 23; i++) {
-            var hour = document.createElement("option");
-            hour.setAttribute("value","i");
-            var hourSelect = document.getElementById("hour-select");
-            hourSelect.appendChild(hour);
-            var hourTxt = document.createTextNode(i);
-            hour.appendChild(hourTxt);
-        }
-        //插入分钟数；
-        for (var i = 0; i <= 59; i++) {
-            var minute = document.createElement("option");
-            minute.setAttribute("value","i");
-            var minuteSelect = document.getElementById("minute-select");
-            minuteSelect.appendChild(minute);
-            var minuteTxt = document.createTextNode(i);
-            minute.appendChild(minuteTxt);
-        }
-        //插入秒数；
-        for (var i = 0; i <= 59; i++) {
-            var second = document.createElement("option");
-            second.setAttribute("value","i");
-            var secondSelect = document.getElementById("second-select");
-            secondSelect.appendChild(second);
-            var secondTxt = document.createTextNode(i);
-            second.appendChild(secondTxt);
-        }
+
+        
         //转换星期表达的函数；
         function weekDay(weekday){
         switch(weekday){
@@ -99,25 +94,31 @@
         }
         return weekday;
     }
+        //获取select文本的函数；
+        function getTargetTxt(selectId){
+            var thisSelect = document.getElementById(selectId);
+            var index = thisSelect.selectedIndex;
+            return thisSelect.options[index].text;
+        }
 
         //获取选中时间的函数；
         function getSelectTime(){
-            var yearIndex = yearSelect.selectedIndex;
-            var yearTar = yearSelect.options[yearIndex].text;
-            var monthIndex = monthSelect.selectedIndex;
-            var monthTar = monthSelect.options[monthIndex].text;
-            var dayIndex = daySelect.selectedIndex;
-            var dayTar = daySelect.options[dayIndex].text;
+
+            //获取选项框中的年月日；
+            var yearTar = getTargetTxt("year-select");
+            var monthTar = getTargetTxt("month-select");
+            var dayTar = getTargetTxt("day-select");
+            console.log(document.getElementById("day-select"));
+            console.log(dayTar);
+            //转化为对应星期几;
             var timeArgu = monthTar + "/" + dayTar + "/" + yearTar;
             var weekTarNum = new Date(Date.parse(timeArgu)).getDay();
             var weekTar = weekDay(weekTarNum);
-            var hourIndex = hourSelect.selectedIndex;
-            var hourTar = hourSelect.options[hourIndex].text;
-            var minuteIndex = minuteSelect.selectedIndex;
-            var minuteTar = minuteSelect.options[minuteIndex].text; 
-            var secondIndex = secondSelect.selectedIndex;
-            var secondTar = secondSelect.options[secondIndex].text;
-
+            //获取小时，分钟，秒；
+            var hourTar = getTargetTxt("hour-select");
+            var minuteTar = getTargetTxt("minute-select");
+            var secondTar = getTargetTxt("second-select");
+            //按特定格式输出;
             var selectTime = yearTar + "年" + monthTar + "月" + dayTar + "日 " + weekTar + " " + hourTar + ":" + minuteTar + ":" + secondTar;
             document.getElementById("select-time").innerHTML = selectTime;
             //将选中的时间转化为毫秒数；
@@ -126,18 +127,27 @@
         //计算选中时间与当前时间的差值；
         function calTimeDiff(){
             var currentTimeMsec = new Date();
+            //判断当前时间毫秒数与选项框时间大小,并计算其差值；
             if (currentTimeMsec >= selectMsec) {
                 diffMsec = currentTimeMsec - selectMsec;
             }else{
                 diffMsec = selectMsec - currentTimeMsec;
             }
+            //将毫秒数转化为秒数并取整；
             var diffSecInt = Math.round(diffMsec / 1000);
+            //获取秒数余数；
             var diffSecRem = diffSecInt % 60;
+            //获取转化的分钟数；
             var diffMinuteInt = Math.floor(diffSecInt / 60);
+            //分钟数余数；
             var diffMinuteRem = diffMinuteInt % 60;
+            //小时数取整；
             var diffHourInt = Math.floor(diffMinuteInt / 60);
+            //小时数余数;
             var diffHourRem = diffHourInt % 24;
+            //天数取整；
             var diffDayInt = Math.floor(diffHourInt / 24);
+            //按特定格式输出;
             var diffTime = diffDayInt + "天" + diffHourRem + "小时" + diffMinuteRem + "分" + diffSecRem + "秒";
             if (currentTimeMsec >= selectMsec) {
                 document.getElementById("current-time").innerHTML = "已经过去 " + diffTime; 
@@ -145,15 +155,24 @@
                 document.getElementById("current-time").innerHTML = "还有 " + diffTime; 
             }   
         }
-        //打开页面时即调用函数；
+        //打开页面时即调用函数
+        exactDays();
         getSelectTime();
         setInterval(calTimeDiff,1000);
-        //改变selected选项时调用函数，onchang事件；
+        //触发year,month选项框时，调用exactDays函数；
+        var selectYear = document.getElementsByTagName("select")[0];
+        var selectMonth = document.getElementsByTagName("select")[1];
         var body = document.getElementsByTagName("body")[0];
+        selectYear.onchange = function(){
+            exactDays();
+        }; 
+        selectMonth.onchange = function(){
+            exactDays();
+        };
         body.onchange = function(){
             getSelectTime();
-            setInterval(calTimeDiff,1000);
-        };     
+        };
+
     </script>
         
 </body>
