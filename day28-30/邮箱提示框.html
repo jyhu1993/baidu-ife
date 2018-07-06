@@ -16,7 +16,7 @@
 			margin: 0px;
 			height: 20px;
 		}
-		.li:hover{
+		li:hover{
 			background-color: pink;
 		}
 	</style>
@@ -36,7 +36,6 @@
 			//显示提示框;
 		    hiddenOrShow();
 		    ulStyle();
-		    changeBgColor();
 		    putTips();
 		    defaultLi();
 		};
@@ -117,14 +116,7 @@
 		function showUl() {
 		    //做具体显示提示框的操作
 		    changeUl();
-		}
-		//鼠标滑过某一个提示时，提示内容背景色变化；
-		function changeBgColor(){
-		    var targetLi = document.getElementsByTagName("li");
-		    for (var i = 0; i < targetLi.length; i++) {
-		    	targetLi[i].setAttribute("class","li");
-		    	}
-			}	
+		}	
 
 		//鼠标点击提示框某元素时，提示内容进入输入框；
 		function putTips(){
