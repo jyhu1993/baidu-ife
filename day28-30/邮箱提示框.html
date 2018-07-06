@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>邮箱输入框</title>
+	<style type="text/css">
+		.wrapper{
+			width:150px;
+			text-align: left;
+		}
+		#email-input{
+			width:100%;
+			background: none;
+			border:1px gray solid;
+			padding: 0px;
+			margin: 0px;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+	    <input id="email-input" type="text">
+	    <ul id="email-sug-wrapper" class="email-sug"></ul>
+	</div>
+	<script type="text/javascript">
+		// 邮箱后缀List参考
+		var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+		//进入页面后获取页面焦点；
+		document.getElementById("email-input").focus();
+		//input框中的输入监听；
+		document.getElementById("email-input").oninput = function() {
+			//显示提示框;
+		    hiddenOrShow();
+		    ulStyle();
+		    changeBgColor();
+		    putTips();
+		    defaultLi();
+		};
+
+		function getUserInput() {
+		    //拿到input输入框的输入内容trim后返回  
+		    var inputTxt = document.getElementById("email-input").value;
+		    return inputTxt.trim(); 
+		}
+		//生成提示框；
+		function toolTip() {
+		    var inputTxt = getUserInput();//获取用户输入
+		    //对用户输入的字符进行转义；
+		    inputTxt = decode(inputTxt);
+		    //判断用户输入的内容是否含有@；
+		    var h = inputTxt.indexOf("@");
+		    if (h != -1) {
+	    		var inputTxtPrefix = inputTxt.slice(0,h);
+	    		var inputTxtPostfix = inputTxt.slice(h+1);
+	    		//遍历postfixList,把用户输入和每一个postfix进行结合成为每一个Li
+	    		for (var i = 0; i < postfixList.length; i++) {
+	    			var strlist = postfixList[i];
+	    			var len = inputTxtPostfix.length;
+	    			if (strlist.slice(0,len) == inputTxtPostfix) {
+	    				var li = document.createElement("li");
+				    	var liTxt = document.createTextNode(inputTxtPrefix+ "@" + postfixList[i]);
+				    	li.appendChild(liTxt);
+				    	var ul = document.getElementById("email-sug-wrapper");
+				    	ul.appendChild(li); 
+	    			}	
+				}
+			//若不含@，直接生产提示框；
+	    	}else if(h == -1){
+	    		for (var i = 0; i < postfixList.length; i++) {
+    				var li = document.createElement("li");
+			    	var liTxt = document.createTextNode(inputTxt+ "@" + postfixList[i]);
+			    	li.appendChild(liTxt);
+			    	var ul = document.getElementById("email-sug-wrapper");
+			    	ul.appendChild(li); 
+    			}	
+	    	}
+
+		}
+		//设置Ul的样式；
+		function ulStyle(){
+			var ul = document.getElementById("email-sug-wrapper");
+			ul.style.width = "100%";
+			ul.style.listStyleType = "none";
+			ul.style.margin =  "-1px 0 0 0";
+			ul.style.padding = "0px";
+			ul.style.border = "solid 1px gray";
+			ul.style.borderTop ="none";
+			
+		}
+
+		//实现每次输入文本时，刷新提示框；
+		function changeUl() {
+			document.getElementById("email-sug-wrapper").innerHTML = "";
+			toolTip();
+		    //获取生成提示框中的提示内容
+		    //将内容添加到email-sug-wrapper中
+		}
+		//显示或隐藏提示框；
+		function hiddenOrShow() {
+			var inputTxt = getUserInput();
+		    if (inputTxt == ""){
+		        hiddenUl();
+		    } else {
+		    	showUl();   
+		    }
+		}
+
+		function hiddenUl() {
+		    //做具体隐藏提示框的操作
+		    document.getElementById("email-sug-wrapper").innerHTML = "";   
+		}
+
+		function showUl() {
+		    //做具体显示提示框的操作
+		    changeUl();
+		}
+		//鼠标滑过某一个提示时，提示内容背景色变化；
+		function changeBgColor(){
+		    var targetLi = document.getElementsByTagName("li");
+			    for (var i = 0; i < targetLi.length; i++) {
+					targetLi[i].onmouseover = function(){
+						this.style.backgroundColor = "pink";
+					};
+					targetLi[i].onmouseout = function(){
+						this.style.backgroundColor = "transparent";
+					};
+				}
+			}	
+
+		//鼠标点击提示框某元素时，提示内容进入输入框；
+		function putTips(){
+			var targetUl = document.getElementById("email-sug-wrapper");
+			targetUl.onclick = function(event){
+				var targetLi = event.target;
+				if (targetLi.nodeName.toLowerCase() == "li") {
+					var liTxt = targetLi.innerHTML;
+					//对选中的提示框的内容进行转义；
+					liTxt = decode(liTxt);
+					document.getElementById("email-input").value = liTxt;
+					hiddenUl();
+					document.getElementById("email-input").focus();
+				}
+			};
+		}
+		//解码函数；
+		function decode(text){
+			var temp = document.createElement("div");
+		    temp.innerHTML = text;
+		    return temp.innerText;
+		}
+
+		//设置上下键实现提示框内容上下选中，回车键将提示框内容；
+		//设置第一个li为默认选中li;
+		function defaultLi(){
+			var targetLi = document.getElementsByTagName("li");
+			if (targetLi.length != 0) {
+				targetLi[0].style.backgroundColor = "orange";
+			}else{
+				return;
+			}	
+		}
+
+/*		//基于DOM的思路；
+		//找到当前选中状态的Li;
+		function findCheckedLi(){
+			var targetLi = document.getElementsByTagName("li");
+			for (var i = 0; i < targetLi.length; i++) {
+				var status = targetLi[i].style.backgroundColor;
+				if (status == "orange") {
+					return targetLi[i];
+				}
+			}
+		}
+
+		//监听按键；
+		document.onkeydown = function(){
+			var targetLi = document.getElementsByTagName("li");
+			var targetUl = document.getElementById("email-sug-wrapper");
+			var targetNum = event.keyCode;
+			////按键为上键时；
+			if (targetNum == 38) {
+				var targetStatus = findCheckedLi();
+					if (targetStatus == targetUl.firstChild) {
+						targetStatus.style.backgroundColor = "transparent";
+						targetLi[targetLi.length-1].style.backgroundColor = "orange";
+					}else{
+						targetStatus.style.backgroundColor = "transparent";
+						targetStatus.previousSibling.style.backgroundColor = "orange";
+					}	
+				}			
+			//按键为下键时；
+			if (targetNum == 40) {
+				var targetStatusD = findCheckedLi();
+					if (targetStatusD == targetUl.lastChild) {
+						targetStatusD.style.backgroundColor = "transparent";
+						targetLi[0].style.backgroundColor = "orange";
+					}else{
+						targetStatusD.style.backgroundColor = "transparent";
+						targetStatusD.nextSibling.style.backgroundColor = "orange";
+					}	
+			}
+			//如果按键是回车；
+			if (targetNum == 13) {
+				var statusEnter = findCheckedLi();
+				var targetTxt = statusEnter.innerHTML;
+				//对选中的邮箱进行解码；
+				targetTxt = decode(targetTxt);
+				document.getElementById("email-input").value = targetTxt;
+				hiddenUl();		
+			}
+		};
+
+*/		
+		//基于数据的思路；
+		//增加一个变量，用于存储当前选中的提示Li的序号,便于后续基于数据的方法使用；
+		var  nowSelectTipIndex = 0;
+		//定义第nowSelectTipIndex个Li的样式被选中；
+		function checkedLi(nowSelectTipIndex){
+			var targetLi = document.getElementsByTagName("li");
+			if (targetLi.length != 0) {
+				targetLi[nowSelectTipIndex].style.backgroundColor = "orange";
+			}else{
+				return;
+			}	
+		}
+		//获取当前选中状态的Li的下标；
+		function getCheckedLiIndex(){
+			var targetLi = document.getElementsByTagName("li");
+			for (var i = 0; i < targetLi.length; i++) {
+				var status = targetLi[i].style.backgroundColor;
+				if (status == "orange") {
+					return i;
+				}
+			}
+
+		}
+		document.onkeydown = function(){
+			var targetLi = document.getElementsByTagName("li");
+			var targetUl = document.getElementById("email-sug-wrapper");
+			var targetNum = event.keyCode;
+			////按键为上键时；
+			if (targetNum == 38) {
+				var nowSelectTipIndex = getCheckedLiIndex();
+				targetLi[nowSelectTipIndex].style.backgroundColor = "transparent";
+				if (nowSelectTipIndex != 0) {
+					nowSelectTipIndex = nowSelectTipIndex - 1;
+					checkedLi(nowSelectTipIndex);
+				}else{
+					nowSelectTipIndex = targetLi.length - 1;
+					checkedLi(nowSelectTipIndex);
+				}
+			}		
+			//按键为下键时；
+			if (targetNum == 40) {
+				var nowSelectTipIndex = getCheckedLiIndex();
+				targetLi[nowSelectTipIndex].style.backgroundColor = "transparent";
+				if (nowSelectTipIndex == targetLi.length - 1) {
+					nowSelectTipIndex = 0;
+					checkedLi(nowSelectTipIndex);
+				}else{
+					nowSelectTipIndex = nowSelectTipIndex + 1;
+					checkedLi(nowSelectTipIndex);
+				}
+				
+			}
+			//如果按键是回车；
+			if (targetNum == 13) {
+				var nowSelectTipIndex = getCheckedLiIndex();
+				var targetTxt = targetLi[nowSelectTipIndex].innerHTML;
+				//对选中的邮箱进行解码；
+				targetTxt = decode(targetTxt);
+				document.getElementById("email-input").value = targetTxt;
+				hiddenUl();		
+			}
+
+		};
+	</script>
+
+</body>
