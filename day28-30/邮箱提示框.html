@@ -16,6 +16,9 @@
 			margin: 0px;
 			height: 20px;
 		}
+		.li:hover{
+			background-color: pink;
+		}
 	</style>
 </head>
 <body>
@@ -118,14 +121,9 @@
 		//鼠标滑过某一个提示时，提示内容背景色变化；
 		function changeBgColor(){
 		    var targetLi = document.getElementsByTagName("li");
-			    for (var i = 0; i < targetLi.length; i++) {
-					targetLi[i].onmouseover = function(){
-						this.style.backgroundColor = "pink";
-					};
-					targetLi[i].onmouseout = function(){
-						this.style.backgroundColor = "transparent";
-					};
-				}
+		    for (var i = 0; i < targetLi.length; i++) {
+		    	targetLi[i].setAttribute("class","li");
+		    	}
 			}	
 
 		//鼠标点击提示框某元素时，提示内容进入输入框；
@@ -182,10 +180,10 @@
 			if (targetNum == 38) {
 				var targetStatus = findCheckedLi();
 					if (targetStatus == targetUl.firstChild) {
-						targetStatus.style.backgroundColor = "transparent";
+						targetStatus.style.backgroundColor = "";
 						targetLi[targetLi.length-1].style.backgroundColor = "orange";
 					}else{
-						targetStatus.style.backgroundColor = "transparent";
+						targetStatus.style.backgroundColor = "";
 						targetStatus.previousSibling.style.backgroundColor = "orange";
 					}	
 				}			
@@ -193,10 +191,10 @@
 			if (targetNum == 40) {
 				var targetStatusD = findCheckedLi();
 					if (targetStatusD == targetUl.lastChild) {
-						targetStatusD.style.backgroundColor = "transparent";
+						targetStatusD.style.backgroundColor = "";
 						targetLi[0].style.backgroundColor = "orange";
 					}else{
-						targetStatusD.style.backgroundColor = "transparent";
+						targetStatusD.style.backgroundColor = "";
 						targetStatusD.nextSibling.style.backgroundColor = "orange";
 					}	
 			}
@@ -235,35 +233,33 @@
 			}
 
 		}
-		document.onkeydown = function(){
+		function keyControl(){
 			var targetLi = document.getElementsByTagName("li");
 			var targetUl = document.getElementById("email-sug-wrapper");
 			var targetNum = event.keyCode;
 			////按键为上键时；
 			if (targetNum == 38) {
 				var nowSelectTipIndex = getCheckedLiIndex();
-				targetLi[nowSelectTipIndex].style.backgroundColor = "transparent";
+				targetLi[nowSelectTipIndex].style.backgroundColor = "";
 				if (nowSelectTipIndex != 0) {
 					nowSelectTipIndex = nowSelectTipIndex - 1;
-					checkedLi(nowSelectTipIndex);
 				}else{
 					nowSelectTipIndex = targetLi.length - 1;
-					checkedLi(nowSelectTipIndex);
 				}
+				checkedLi(nowSelectTipIndex);
 			}		
 			//按键为下键时；
 			if (targetNum == 40) {
 				var nowSelectTipIndex = getCheckedLiIndex();
-				targetLi[nowSelectTipIndex].style.backgroundColor = "transparent";
+				targetLi[nowSelectTipIndex].style.backgroundColor = "";
 				if (nowSelectTipIndex == targetLi.length - 1) {
 					nowSelectTipIndex = 0;
-					checkedLi(nowSelectTipIndex);
 				}else{
-					nowSelectTipIndex = nowSelectTipIndex + 1;
-					checkedLi(nowSelectTipIndex);
+					nowSelectTipIndex = nowSelectTipIndex + 1;					
 				}
-				
+				checkedLi(nowSelectTipIndex);	
 			}
+			
 			//如果按键是回车；
 			if (targetNum == 13) {
 				var nowSelectTipIndex = getCheckedLiIndex();
@@ -273,8 +269,14 @@
 				document.getElementById("email-input").value = targetTxt;
 				hiddenUl();		
 			}
+			//esc 选中文本；
+			if (targetNum == 27) {
+				document.getElementById("email-input").select();
 
-		};
+			}
+		}
+		document.addEventListener("keydown", function(){
+			keyControl();},false);
 	</script>
 
 </body>
