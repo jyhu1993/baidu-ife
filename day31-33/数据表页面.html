@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据表页面</title>
+	<style type="text/css">
+		table, th, td{
+			border:gray 1px solid;
+		}
+		table{
+			border-collapse: collapse;
+		}
+	</style>
+</head>
+<body>
+	<form id="region-select">
+		<input type="checkbox" name="region" value="华南" checked="checked">华南
+		<input type="checkbox" name="region" value="华东">华东
+		<input type="checkbox" name="region" value="华北">华北
+		<input id="region-all" type="checkbox" name="region-all" value="全选">全选
+	</form>
+	<form id="product-select">
+		<input type="checkbox" name="product" value="手机" checked="checked">手机
+		<input type="checkbox" name="product" value="笔记本">笔记本
+		<input type="checkbox" name="product" value="智能音箱">智能音箱
+		<input type="checkbox" name="product-all" value="全选">全选
+	</form>
+	<div id = "table-wrapper">		
+	</div>	
+</body>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="checkBox.js"></script>
+<script type="text/javascript" src="getData.js"></script>
+<script type="text/javascript" src="table.js"></script>
+</html>
