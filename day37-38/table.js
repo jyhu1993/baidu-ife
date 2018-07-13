@@ -7,8 +7,8 @@
 		tableWrapper.appendChild(table);
 		//获取选中数据；
 		console.log(typeof localStorage.Data);
-		if (localStorage.Data == undefined){
-			cosole.log(1);
+		if (typeof localStorage.Data == 'undefined'){
+			console.log(1);
 			var mergeArr = getData(sourceData).mergeArr;
 			var regionLength = getData(sourceData).regionLength;
 			var productLength = getData(sourceData).productLength;
