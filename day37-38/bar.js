@@ -13,7 +13,12 @@ var SVG_NS = 'http://www.w3.org/2000/svg';
 		//定义柱的默认样式；
 		var defaultStyle = 'fill:#2E86C1';
 		//设置默认图表；
-		var saleArr = JSON.parse(localStorage.Data)[2].sale;
+		if (!JSON.parse(localStorage.Data)) {
+			var saleArr = sourceData[2].sale;
+		}else{
+			var saleArr = JSON.parse(localStorage.Data)[2].sale;
+		}
+
 		//调用缩放函数，处理数据;
 		var barScale = arrScale(svgSize.height,saleArr);
 		var scale = barScale.scale;
