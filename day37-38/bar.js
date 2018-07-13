@@ -13,7 +13,7 @@ var SVG_NS = 'http://www.w3.org/2000/svg';
 		//定义柱的默认样式；
 		var defaultStyle = 'fill:#2E86C1';
 		//设置默认图表；
-		if (!JSON.parse(localStorage.Data)) {
+		if (typeof localStorage.Data == 'undefined') {
 			var saleArr = sourceData[2].sale;
 		}else{
 			var saleArr = JSON.parse(localStorage.Data)[2].sale;
