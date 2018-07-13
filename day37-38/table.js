@@ -6,7 +6,7 @@
 		var table = document.createElement("table");
 		tableWrapper.appendChild(table);
 		//获取选中数据；
-		if (!JSON.parse(localStorage.getItem('Data') {
+		if (!JSON.parse(localStorage.getItem('Data')) {
 			var mergeArr = getData(sourceData).mergeArr;
 			var regionLength = getData(sourceData).regionLength;
 			var productLength = getData(sourceData).productLength;
