@@ -38,7 +38,14 @@ document.getElementById('table-wrapper').addEventListener('mouseout',function(){
 
 
 //设置表格内容变为可编辑状态；
-function editSheet(){	
+function editSheet(){
+	//判断是否已存在一个input输入框；若有，则点击下一个输入框时取消上一个；
+	var btn = document.getElementsByTagName('button');
+	if (btn.length > 1) {
+		var tdOld = btn[0].parentNode;
+		var inputOld = tdOld.childNodes[0];
+		tdOld.innerHTML = inputOld.value;
+	}
 	//获取正在被点击的span;
 	var target = event.target;
 	var td = target.parentNode;
@@ -60,13 +67,7 @@ function editSheet(){
 	var btnCancelTxt = document.createTextNode('取消');
 	btnCancel.appendChild(btnCancelTxt);
 	td.appendChild(btnCancel);
-	//判断是否已存在一个input输入框；若有，则点击下一个输入框时取消上一个；
-	var btn = document.getElementsByTagName('button');
-	if (btn.length > 2) {
-		var tdOld = btn[0].parentNode;
-		var inputOld = tdOld.childNodes[0];
-		tdOld.innerHTML = sheetNum;
-	}
+	
 	//点击取消按钮时，取消编辑框，数字恢复为之前的数字；
 	document.getElementsByTagName('button')[1].addEventListener('click',function(){
  		td.innerHTML = sheetNum;
