@@ -14,7 +14,7 @@
 	//定义数据点的间隔；
 	var num = 40;
 	//设置默认图表；
-	if (!JSON.parse(localStorage.Data)) {
+	if (typeof localStorage.Data == 'undefined') {
 		drawLineGraph(sourceData[2].sale);
 	}else{
 		drawLineGraph(JSON.parse(localStorage.Data)[2].sale);
