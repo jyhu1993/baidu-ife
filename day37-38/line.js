@@ -14,7 +14,11 @@
 	//定义数据点的间隔；
 	var num = 40;
 	//设置默认图表；
-	drawLineGraph(JSON.parse(localStorage.Data)[2].sale);
+	if (!JSON.parse(localStorage.Data)) {
+		drawLineGraph(sourceData[2].sale);
+	}else{
+		drawLineGraph(JSON.parse(localStorage.Data)[2].sale);
+	}
 
 function lineGraph(){	
 	//鼠标滑过表格时获取销售数据,并结合画布高度进行缩放；
