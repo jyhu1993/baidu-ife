@@ -6,9 +6,15 @@
 		var table = document.createElement("table");
 		tableWrapper.appendChild(table);
 		//获取选中数据；
-		var mergeArr = getData(JSON.parse(localStorage.Data)).mergeArr;
-		var regionLength = getData(JSON.parse(localStorage.Data)).regionLength;
-		var productLength = getData(JSON.parse(localStorage.Data)).productLength;
+		if (!JSON.parse(localStorage.Data)) {
+			var mergeArr = getData(sourceData).mergeArr;
+			var regionLength = getData(sourceData).regionLength;
+			var productLength = getData(sourceData).productLength;
+		}else{
+			var mergeArr = getData(JSON.parse(localStorage.Data)).mergeArr;
+			var regionLength = getData(JSON.parse(localStorage.Data)).regionLength;
+			var productLength = getData(JSON.parse(localStorage.Data)).productLength;
+		}
 		//输出表头;
 		var thContent = [];
 		if (regionLength == 1 && productLength > 1) {
