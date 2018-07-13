@@ -6,8 +6,9 @@
 		var table = document.createElement("table");
 		tableWrapper.appendChild(table);
 		//获取选中数据；
-		console.log(localStorage.Data);
-		if (localStorage.Data == 'undefined'){
+		console.log(typeof localStorage.Data);
+		if (localStorage.Data == undefined){
+			cosole.log(1);
 			var mergeArr = getData(sourceData).mergeArr;
 			var regionLength = getData(sourceData).regionLength;
 			var productLength = getData(sourceData).productLength;
