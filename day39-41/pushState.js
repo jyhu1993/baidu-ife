@@ -22,9 +22,9 @@ function recordWebState(){
 		regionArr:regionArr,
 		productArr:productArr
 	};
-	var hash = window.location.hash;
+	var hashOld = window.location.hash;
 	var href = window.location.href;
-	var url = href.replace(hash,'');
+	var url = href.replace(hashOld,'');
 	window.history.pushState(state,'',url + '#'+ hash);
 
 }
