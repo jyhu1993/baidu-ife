@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据表页面</title>
+	<style type="text/css">
+		table, th, td{
+			border:gray 1px solid;
+		}
+		table{	
+			width: 1200px;
+		}
+		td{
+			text-align: center;
+		}
+		svg{
+			padding: 0px 10px 30px 35px;
+		}
+		#graph{
+			display: inline-block;
+			display: flex;
+			width: 100%;
+		}
+		span{
+			color:gray;
+			position: absolute;
+			font-size: 10px;
+		}
+
+		text{
+			font-size: 15px;
+			font-family: sans-serif;
+			font-color:black;
+		}
+		button{
+			height: 20px;
+			vertical-align: middle;		
+		}
+
+	</style>
+</head>
+<body>
+	<form id="region-select">
+		<input type="checkbox" name="region" value="华南" checked="checked">华南
+		<input type="checkbox" name="region" value="华东">华东
+		<input type="checkbox" name="region" value="华北">华北
+		<input id="region-all" type="checkbox" name="region-all" value="全选">全选
+	</form>
+	<form id="product-select">
+		<input type="checkbox" name="product" value="手机" checked="checked">手机
+		<input type="checkbox" name="product" value="笔记本">笔记本
+		<input type="checkbox" name="product" value="智能音箱">智能音箱
+		<input type="checkbox" name="product-all" value="全选">全选
+	</form>
+	<p>将鼠标放在表格数据上，将变更数据图</p>
+	<div id = "graph"></div>
+	<div id = "table-wrapper"></div>	
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="checkBox.js"></script>
+	<script type="text/javascript" src="getData.js"></script>
+	<script type="text/javascript" src="table.js"></script>
+	<script type="text/javascript" src="bar.js"></script>
+	<script type="text/javascript" src="line.js"></script>
+	<script type="text/javascript" src="editTable.js"></script>
+	<script type="text/javascript" src="hash.js"></script>
+	<script type="text/javascript" src="pushState.js"></script>
+</body>
+
+</html>
