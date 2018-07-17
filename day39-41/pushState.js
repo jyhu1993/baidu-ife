@@ -25,6 +25,7 @@ function recordWebState(){
 	var hashOld = window.location.hash;
 	var href = window.location.href;
 	var url = href.replace(hashOld,'');
+	console.log(url);
 	window.history.pushState(state,'',url + '#'+ hash);
 
 }
