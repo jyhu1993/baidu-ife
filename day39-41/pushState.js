@@ -22,8 +22,9 @@ function recordWebState(){
 		regionArr:regionArr,
 		productArr:productArr
 	};
+	var url = window.location.href;
 	
-	window.history.pushState(state,'','#'+ hash);
+	window.history.pushState(state,'',url + '#'+ hash);
 
 }
 
