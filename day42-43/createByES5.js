@@ -6,12 +6,12 @@ function Restaurant(obj) {
 }
 //在Restaurant.prototype中加入方法-招聘职员；
 Restaurant.prototype.hire = function(obj){
-	this.staff.push(obj);
+	this.staff.push(obj.name);
 };
 //在Restaurant.prototype中加入方法-解雇职员；
 Restaurant.prototype.fire = function(obj){
 	var staff = this.staff;
-	var num = staff.indexOf(obj);
+	var num = staff.indexOf(obj.name);
 	staff = staff.splice(num,1);
 };
 
