@@ -28,4 +28,7 @@
 
 >>day37-38 实现数据的存储与传输<br />
 >>>>1,在表格数据上添加可编辑功能，将修改后的数据用localStorage进行存储<br />
-  
+
+>>day39-41 保存页面状态<br />
+>>>>1,分别运用location.hash和history.pushState功能实现页面在刷新时，保留之前的渲染状态；以及通过url copy后在新窗口打开，也保留之前的渲染状态；<br />
+>>>>2,hashchange事件监听hash的变更；popState实现点击前进后退按钮时页面更新为其对应的状态；<br />
