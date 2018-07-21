@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>开一家餐厅吧</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<div id = 'restaurant'>
+	<h1>今日营业额：<span id = 'money'>0</span></h1>	
+	<h2>正在等待的顾客人数：<span id = 'waiting-number'></span></h2>
+	<div id = 'people'>
+		<span id="customer-words"></span>
+		<span id="server-words"></span>
+		<div id="cooker-status">
+			厨师的状态:<br /><span id='working-dish'>空闲</span><br />
+			待做的菜:<br /><span id='dishes-list'></span>
+		</div>
+		<img id = 'customer' src="customer2.png">
+		<img id='server' src="server.png">
+		<img id='cooker' src="cooker.png">
+
+	</div>
+</div>
+<body>
+	<script type="text/javascript" src="serverPosition.js"></script>
+	<script type="text/javascript" src="Dishes.js"></script>
+	<script type="text/javascript" src="Customer.js"></script>	
+	<script type="text/javascript" src="Staff.js"></script>
+	<script type="text/javascript" src="Restaurant.js"></script>
+</body>
+</html>
